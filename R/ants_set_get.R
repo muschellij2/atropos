@@ -69,7 +69,7 @@ getPixels <- function(x, i = NA, j = NA, k = NA, l = NA) {
       stop("indices must be of class 'integer' or 'numeric'")
     }
   }
-  return(.Call("antsImage_GetPixels", x, lst, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_GetPixels", x, lst, PACKAGE = "atropos"))
 }
 
 #' @title antsImageGetSet
@@ -101,7 +101,7 @@ antsGetSpacing <- function(x) {
     stop("Input must be of class 'antsImage'")
   }
   
-  return(.Call("antsImage_GetSpacing", x, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_GetSpacing", x, PACKAGE = "atropos"))
 }
 #' @rdname antsImageGetSet
 #' @param spacing numeric vector of length \code{d}.
@@ -119,7 +119,7 @@ antsSetSpacing <- function(x, spacing) {
     stop("spacing must be of same dimensions as image")
   }
   
-  return(.Call("antsImage_SetSpacing", x, spacing, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_SetSpacing", x, spacing, PACKAGE = "atropos"))
 }
 
 #' @rdname antsImageGetSet
@@ -129,7 +129,7 @@ antsGetOrigin <- function(x) {
   if (class(x)[1] != "antsImage") {
     stop("Input must be of class 'antsImage'")
   }
-  return(.Call("antsImage_GetOrigin", x, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_GetOrigin", x, PACKAGE = "atropos"))
 }
 #' @rdname antsImageGetSet
 #' @usage antsSetOrigin(x, origin)
@@ -147,11 +147,11 @@ antsSetOrigin <- function(x, origin) {
     stop("spacing must be of same dimensions as image")
   }
   
-  # res = .Call("antsImage_SetOrigin", x, origin, PACKAGE = "ANTsRCore")
+  # res = .Call("antsImage_SetOrigin", x, origin, PACKAGE = "atropos")
   # if (res != 0) {
   #   warning("Setting origin did not have result 0, results may be wrong")
   # }
-  return(.Call("antsImage_SetOrigin", x, origin, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_SetOrigin", x, origin, PACKAGE = "atropos"))
 }
 
 #' @rdname antsImageGetSet
@@ -166,7 +166,7 @@ antsGetDirection <- function(x) {
   if (class(x)[1] != "antsImage") {
     stop("Input must be of class 'antsImage'")
   }
-  return(.Call("antsImage_GetDirection", x, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_GetDirection", x, PACKAGE = "atropos"))
 }
 
 #' @rdname antsImageGetSet
@@ -191,7 +191,7 @@ antsSetDirection <- function(x, direction) {
   if ((dim(direction)[1] != length(dim(x))) || (dim(direction)[2] != length(dim(x)))) {
     stop("direction matrix must be of size imagedim * imagedim")
   }
-  return(.Call("antsImage_SetDirection", x, direction, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_SetDirection", x, direction, PACKAGE = "atropos"))
 }
 
 
@@ -254,7 +254,7 @@ antsSetPixels <- function(x, i = NA, j = NA, k = NA, l = NA, value) {
       stop("indices must be of class 'integer' or 'numeric'")
     }
   }
-  returnList <- (.Call("antsImage_SetPixels", x, lst, value, PACKAGE = "ANTsRCore"))
+  returnList <- (.Call("antsImage_SetPixels", x, lst, value, PACKAGE = "atropos"))
   
   if ( returnList$flag > 0 ) {
     warning( returnList$error )

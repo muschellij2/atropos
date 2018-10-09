@@ -3,7 +3,7 @@
 #' @title antsVersions
 #'
 #' @description A data frame defining the git tag for the current
-#' ANTsRCore version of ANTs.
+#' atropos version of ANTs.
 #'
 #' @format
 #' A data frame listing the following variables.

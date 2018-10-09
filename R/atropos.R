@@ -57,7 +57,7 @@ atropos <- function( a, x,
   use_random_seed = FALSE,
   ...) {
   if ( missing(x)) {
-    .Call("Atropos", .int_antsProcessArguments(c(a)), PACKAGE = "ANTsRCore")
+    .Call("Atropos", .int_antsProcessArguments(c(a)), PACKAGE = "atropos")
     return(NULL)
   }
   use_random_seed = as.integer(as.logical(use_random_seed))
@@ -134,7 +134,7 @@ atropos <- function( a, x,
   }
   if ( length(a) > 6)
     stop(" more than 6 input images not really supported, using first 6 ")
-  .Call("Atropos", .int_antsProcessArguments(c(myargs)), PACKAGE = "ANTsRCore")
+  .Call("Atropos", .int_antsProcessArguments(c(myargs)), PACKAGE = "atropos")
   probsout <- list.files(path = tdir,
     pattern = utils::glob2rx(searchpattern), full.names = TRUE,
     recursive = FALSE)

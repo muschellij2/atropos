@@ -35,7 +35,7 @@ antsTransformIndexToPhysicalPoint <- function(x, index) {
     stop(paste("Index matrix must be of size N x", imgdim))
   }
   
-  return(.Call("antsImage_TransformIndexToPhysicalPoint", x, index, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_TransformIndexToPhysicalPoint", x, index, PACKAGE = "atropos"))
 }
 
 
@@ -77,5 +77,5 @@ antsTransformPhysicalPointToIndex <- function(x, point) {
     stop(paste("Point matrix must be of size N x", imgdim))
   }
   
-  return(.Call("antsImage_TransformPhysicalPointToIndex", x, point, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_TransformPhysicalPointToIndex", x, point, PACKAGE = "atropos"))
 }

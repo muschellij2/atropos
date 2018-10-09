@@ -5,14 +5,14 @@
 #'
 #' @slot index indices of the region
 #' @slot size size of the region
-#' @useDynLib ANTsRCore
+#' @useDynLib atropos
 #' @import Rcpp
 #' @import ITKR
 #' @import methods
 #' @import tools
 #' @import stats
 setClass(Class = "antsRegion", representation(index = "numeric", size = "numeric"))
-##### @useDynLib ANTsRCore, .registration = TRUE
+##### @useDynLib atropos, .registration = TRUE
 
 
 #' An S4 class for an antsImage
@@ -62,7 +62,7 @@ setMethod(f = "show", "antsImage", function(object){
 setMethod(f = "initialize", signature(.Object = "antsImage"),
           definition = function(.Object,
                                 pixeltype = "float", dimension = 3, components = 1, isVector=FALSE) {
-            return(.Call("antsImage", pixeltype, dimension, components, PACKAGE = "ANTsRCore"))
+            return(.Call("antsImage", pixeltype, dimension, components, PACKAGE = "atropos"))
           })
 
 #' @rdname as.array
@@ -70,7 +70,7 @@ setMethod(f = "initialize", signature(.Object = "antsImage"),
 #' @aliases dim,antsImage-method
 #' @export
 setMethod(f = "dim", signature(x = "antsImage"), definition = function(x) {
-  return(.Call("antsImage_dim", x, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_dim", x, PACKAGE = "atropos"))
 })
 
 
@@ -80,7 +80,7 @@ setMethod(f = "dim", signature(x = "antsImage"), definition = function(x) {
 # #' @export
 #rm.antsImage <- function(x) {
 #  print("rm.antsImage(x)")
-#  a = .Call("antsImage_rm", x, PACKAGE = "ANTsRCore")
+#  a = .Call("antsImage_rm", x, PACKAGE = "atropos")
 #  print("done with call to antsImage_rm")
 #  #x@pointer = NA
 #  rm(x)
@@ -100,7 +100,7 @@ setMethod(f = "dim", signature(x = "antsImage"), definition = function(x) {
 #' outimg<-makeImage( c(2,10) , 1)
 #' is.na(outimg)
 setMethod(f = "is.na", signature(x = "antsImage"), definition = function(x) {
-  val <- .Call("antsImage_isna", x, PACKAGE = "ANTsRCore")
+  val <- .Call("antsImage_isna", x, PACKAGE = "atropos")
   if (val > 0) {
     return(TRUE)
   }
@@ -128,7 +128,7 @@ setMethod(f = "as.numeric", signature(x = "antsImage"),
             if (typeof(mask) != "logical") {
               stop("'mask' provided is not of type 'logical'")
             }
-            num = .Call("antsImage_asVector", x, mask, region, PACKAGE = "ANTsRCore")
+            num = .Call("antsImage_asVector", x, mask, region, PACKAGE = "atropos")
             num = as.numeric(num)
             return(num)
           })
@@ -153,7 +153,7 @@ setMethod(f = "as.matrix", signature(x = "antsImage"),
             if (x@dimension != 2) {
               stop("image dimension must be 2")
             }
-            return(.Call("antsImage_asVector", x, mask, region, PACKAGE = "ANTsRCore"))
+            return(.Call("antsImage_asVector", x, mask, region, PACKAGE = "atropos"))
           })
 
 #' @rdname as.array
@@ -170,7 +170,7 @@ as.matrix.antsImage = function(x, ...,
   if (x@dimension != 2) {
     stop("image dimension must be 2")
   }
-  return(.Call("antsImage_asVector", x, mask, region, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_asVector", x, mask, region, PACKAGE = "atropos"))
 }
 
 #' @title Coerce antsImage objects to array
@@ -186,7 +186,7 @@ setMethod(f = "as.array", signature(x = "antsImage"),
             if (typeof(mask) != "logical") {
               stop("'mask' provided is not of type 'logical'")
             }
-            return(.Call("antsImage_asVector", x, mask, region, PACKAGE = "ANTsRCore"))
+            return(.Call("antsImage_asVector", x, mask, region, PACKAGE = "atropos"))
           })
 
 #' @rdname as.array
@@ -205,7 +205,7 @@ as.array.antsImage = function(x, ..., mask = logical(),
   if (typeof(mask) != "logical") {
     stop("'mask' provided is not of type 'logical'")
   }
-  return(.Call("antsImage_asVector", x, mask, region, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_asVector", x, mask, region, PACKAGE = "atropos"))
 }
 
 #' @rdname as.array
@@ -290,7 +290,7 @@ setMethod(f = "as.antsImage", signature(object = "matrix"), definition = functio
     origin = antsGetOrigin(reference)[seq_len(ndim)]
     direction = antsGetDirection(reference)
   }
-  return(.Call("antsImage_asantsImage", object, pixeltype, spacing, origin, direction, components, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_asantsImage", object, pixeltype, spacing, origin, direction, components, PACKAGE = "atropos"))
 })
 
 #' @rdname as.antsImage
@@ -312,7 +312,7 @@ setMethod(f = "as.antsImage", signature(object = "array"), definition = function
     origin = antsGetOrigin(reference)[seq_len(ndim)]
     direction = antsGetDirection(reference)
   }
-  return(.Call("antsImage_asantsImage", object, pixeltype, spacing, origin, direction, components, PACKAGE = "ANTsRCore"))
+  return(.Call("antsImage_asantsImage", object, pixeltype, spacing, origin, direction, components, PACKAGE = "atropos"))
 })
 
 #' @title is.antsImage

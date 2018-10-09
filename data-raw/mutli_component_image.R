@@ -1,4 +1,4 @@
-library(ANTsRCore)
+library(atropos)
 set.seed(1234)
 dims = c(30, 30)
 n = prod(dims)
