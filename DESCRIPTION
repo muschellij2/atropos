@@ -43,3 +43,5 @@ NeedsCompilation: yes
 RoxygenNote: 6.1.0
 VignetteBuilder: knitr
 Encoding: UTF-8
+URL: https://github.com/muschellij2/atropos
+BugReports: https://github.com/muschellij2/atropos/issues
