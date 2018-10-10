@@ -110,6 +110,9 @@ if [[ ! -s antb ]] ; then
   mkdir antb
 fi
 cp ../inst/include/antscore.h ./ants/Examples/include/ants.h
+cp ../inst/include/RcppANTsR.h ./ants/Examples/include/RcppANTsR.h
+mkdir -p ./ants/Examples/include/RcppANTsR
+cp ../inst/include/RcppANTsR/* ./ants/Examples/include/RcppANTsR/
 cp -r ants/Examples/include/* ../inst/include/
 cp -r ants/Utilities/* ../inst/include/
 cp -r ants/Examples/*  ../inst/include/
